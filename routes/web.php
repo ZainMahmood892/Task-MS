@@ -17,3 +17,7 @@ Route::get('/check', function () {
 Route::get('/empty', function () {
     return view('muji.empty');
 });
+
+Route::get('/login', function () {
+    return view('login');
+});
