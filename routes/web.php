@@ -13,3 +13,7 @@ Route::get('/buttonChk', function () {
 Route::get('/check', function () {
     return view('check');
 });
+
+Route::get('/empty', function () {
+    return view('muji.empty');
+});
