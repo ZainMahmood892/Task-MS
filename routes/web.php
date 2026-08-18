@@ -6,6 +6,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/red-heading', function () {
+Route::get('/buttonChk', function () {
     return view('red-heading');
 });
