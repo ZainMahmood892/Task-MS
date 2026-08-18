@@ -21,3 +21,7 @@ Route::get('/empty', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/authController', function () {
+    return view('app.Http.Controllers.AuthController');
+});
