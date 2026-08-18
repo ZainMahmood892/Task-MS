@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/buttonChk', function () {
     return view('red-heading');
 });
+
+Route::get('/check', function () {
+    return view('check');
+});
