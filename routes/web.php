@@ -25,3 +25,7 @@ Route::get('/login', function () {
 Route::get('/authController', function () {
     return view('app.Http.Controllers.AuthController');
 });
+
+Route::get('/database.migrations.0003_01_01_000000_create_products_table', function () {
+    return view('database.migrations.0003_01_01_000000_create_products_table');
+});
