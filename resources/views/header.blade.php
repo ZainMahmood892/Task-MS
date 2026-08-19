@@ -2,55 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>App Header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN for quick prototyping -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Header</title>
+    <style>
+        /* Header styles */
+        header {
+            background-color: #4A90E2;
+            padding: 20px 40px;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #D1E8FF;
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 10px;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 shadow-md">
-        <div class="container mx-auto flex items-center justify-between py-4 px-6">
-            <a href="{{ url('/') }}" class="flex items-center space-x-3">
-                <img src="{{ asset('images/logo.svg') }}" alt="App Logo" class="h-10 w-10">
-                <span class="text-white text-xl font-bold tracking-wide">MyApp</span>
-            </a>
-            <nav>
-                <ul class="flex space-x-6 text-white font-semibold">
-                    <li>
-                        <a href="{{ url('/') }}" class="hover:text-yellow-300 transition duration-300">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/about') }}" class="hover:text-yellow-300 transition duration-300">About</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/services') }}" class="hover:text-yellow-300 transition duration-300">Services</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/contact') }}" class="hover:text-yellow-300 transition duration-300">Contact</a>
-                    </li>
-                    @auth
-                        <li>
-                            <a href="{{ url('/dashboard') }}" class="hover:text-yellow-300 transition duration-300">Dashboard</a>
-                        </li>
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="hover:text-yellow-300 transition duration-300">Logout</button>
-                            </form>
-                        </li>
-                    @else
-                        <li>
-                            <a href="{{ route('login') }}" class="hover:text-yellow-300 transition duration-300">Login</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('register') }}" class="hover:text-yellow-300 transition duration-300">Register</a>
-                        </li>
-                    @endauth
-                </ul>
-            </nav>
+    <header>
+        <div class="logo">
+            AI Header
         </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 </body>
 </html>
