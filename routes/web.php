@@ -33,3 +33,7 @@ Route::get('/database.migrations.0003_01_01_000000_create_products_table', funct
 Route::get('/header', function () {
     return view('header');
 });
+
+Route::get('/css.header', function () {
+    return view('css.header');
+});
