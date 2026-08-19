@@ -1,77 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar</title>
-    <style>
-        /* Sidebar container */
-        .sidebar {
-            height: 100vh;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #2c3e50;
-            padding-top: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Sidebar links */
-        .sidebar a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 18px;
-            color: #ecf0f1;
-            display: block;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* Hover effect */
-        .sidebar a:hover {
-            background-color: #34495e;
-            color: #1abc9c;
-        }
-
-        /* Active/current link */
-        .sidebar a.active {
-            background-color: #1abc9c;
-            color: white;
-        }
-
-        /* Content area */
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Sidebar header */
-        .sidebar-header {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ecf0f1;
-            padding: 0 25px 20px;
-            border-bottom: 1px solid #34495e;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="sidebar">
-        <div class="sidebar-header">My Sidebar</div>
-        <a href="#" class="active">Dashboard</a>
-        <a href="#">Profile</a>
-        <a href="#">Messages</a>
-        <a href="#">Settings</a>
-        <a href="#">Logout</a>
+<div class="sidebar bg-gray-800 text-white h-full min-h-screen p-5">
+    <div class="sidebar-header mb-8 flex items-center justify-between">
+        <h2 class="text-2xl font-bold">My App</h2>
+        <button class="md:hidden text-gray-400 hover:text-white focus:outline-none" id="sidebarToggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
     </div>
+    <nav>
+        <ul class="space-y-4">
+            <li>
+                <a href="{{ route('dashboard') }}"
+                   class="flex items-center px-3 py-2 rounded hover:bg-gray-700 transition-colors duration-200
+                   {{ request()->routeIs('dashboard') ? 'bg-gray-900' : '' }}">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M3 3h18v18H3V3z"/>
+                    </svg>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('profile') }}"
+                   class="flex items-center px-3 py-2 rounded hover:bg-gray-700 transition-colors duration-200
+                   {{ request()->routeIs('profile') ? 'bg-gray-900' : '' }}">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M5.121 17.804A4 4 0 1116.88 6.195m-6.438 8.2a4 4 0 005.757-5.758"/>
+                    </svg>
+                    Profile
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('settings') }}"
+                   class="flex items-center px-3 py-2 rounded hover:bg-gray-700 transition-colors duration-200
+                   {{ request()->routeIs('settings') ? 'bg-gray-900' : '' }}">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 8v4l3 3"/>
+                        <circle cx="12" cy="12" r="10" stroke="none"/>
+                    </svg>
+                    Settings
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                   class="flex items-center px-3 py-2 rounded hover:bg-red-600 transition-colors duration-200 text-red-400 hover:text-white">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17 16l4-4m0 0l-4-4m4 4H7"/>
+                    </svg>
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    @csrf
+                </form>
+            </li>
+        </ul>
+    </nav>
+</div>
 
-    <div class="content">
-        <h1>Welcome to the Sidebar Page</h1>
-        <p>This is an example page with a fixed sidebar navigation using HTML and CSS.</p>
-    </div>
-</body>
-</html>
+<script>
+    document.getElementById('sidebarToggle').addEventListener('click', function () {
+        const sidebar = this.closest('.sidebar');
+        sidebar.classList.toggle('hidden');
+    });
+</script>
