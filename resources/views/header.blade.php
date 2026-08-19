@@ -5,70 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
     <style>
-        /* Header styles */
+        /* Assuming existing header styles here */
         header {
-            background-color: #4A90E2;
-            padding: 20px 40px;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            letter-spacing: 2px;
+            color: #333;
         }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+        nav {
             display: flex;
+            gap: 15px;
+            align-items: center;
         }
-        nav ul li {
-            margin-left: 30px;
-        }
-        nav ul li a {
+        nav a {
             text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #e2e6ea;
+        }
+        /* New button style */
+        .header-button {
+            background-color: black;
             color: white;
-            font-weight: 600;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
             font-size: 1rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        nav ul li a:hover {
-            color: #D1E8FF;
+        .header-button:hover,
+        .header-button:focus {
+            background-color: #222;
+            outline: none;
         }
+        /* Responsive adjustments */
         @media (max-width: 600px) {
             header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            nav ul {
-                flex-direction: column;
+            nav {
                 width: 100%;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 10px;
                 margin-top: 10px;
             }
-            nav ul li {
-                margin: 10px 0;
+            .header-button {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            AI Header
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <div class="logo">MySite</div>
+    <nav>
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <!-- New button added here inside nav for proper placement -->
+        <button type="button" class="header-button">New Button</button>
+    </nav>
+</header>
 </body>
 </html>
