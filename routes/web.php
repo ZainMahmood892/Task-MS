@@ -13,3 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/css/header', function () {
     return view('css.header');
 });
+
+Route::get('/header', function () {
+    return view('header');
+});
