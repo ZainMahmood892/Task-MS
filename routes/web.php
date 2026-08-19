@@ -9,3 +9,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Add your other routes below as needed.
+
+Route::get('/css/header', function () {
+    return view('css.header');
+});
