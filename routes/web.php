@@ -29,3 +29,7 @@ Route::get('/authController', function () {
 Route::get('/database.migrations.0003_01_01_000000_create_products_table', function () {
     return view('database.migrations.0003_01_01_000000_create_products_table');
 });
+
+Route::get('/header', function () {
+    return view('header');
+});
