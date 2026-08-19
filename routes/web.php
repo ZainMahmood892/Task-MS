@@ -2,38 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Other routes here...
 
-Route::get('/buttonChk', function () {
-    return view('red-heading');
-});
+// Removed the route: Route::get('/css.header', function () {
+//     return view('css.header');
+// });
 
-Route::get('/check', function () {
-    return view('check');
-});
-
-Route::get('/empty', function () {
-    return view('muji.empty');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/authController', function () {
-    return view('app.Http.Controllers.AuthController');
-});
-
-Route::get('/database.migrations.0003_01_01_000000_create_products_table', function () {
-    return view('database.migrations.0003_01_01_000000_create_products_table');
-});
-
-Route::get('/header', function () {
-    return view('header');
-});
-
-Route::get('/css.header', function () {
-    return view('css.header');
-});
+// Add your other routes below as needed.
