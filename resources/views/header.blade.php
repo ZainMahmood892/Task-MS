@@ -2,75 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>App Header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header Example</title>
-    <style>
-        /* Basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        /* Header styling */
-        header {
-            background-color: #1E40AF; /* blue-800 */
-            color: white;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        /* Logo styling */
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            cursor: pointer;
-            user-select: none;
-        }
-        /* Navigation menu */
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: #93C5FD; /* light blue */
-        }
-        /* Responsive for smaller screens */
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                padding: 15px 20px;
-            }
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-                margin-top: 15px;
-            }
-        }
-    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for quick prototyping -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <header>
-        <div class="logo">MyWebsite</div>
-        <nav>
-            <ul>
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="{{ url('/about') }}">About</a></li>
-                <li><a href="{{ url('/services') }}">Services</a></li>
-                <li><a href="{{ url('/contact') }}">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 shadow-md">
+        <div class="container mx-auto flex items-center justify-between py-4 px-6">
+            <a href="{{ url('/') }}" class="flex items-center space-x-3">
+                <img src="{{ asset('images/logo.svg') }}" alt="App Logo" class="h-10 w-10">
+                <span class="text-white text-xl font-bold tracking-wide">MyApp</span>
+            </a>
+            <nav>
+                <ul class="flex space-x-6 text-white font-semibold">
+                    <li>
+                        <a href="{{ url('/') }}" class="hover:text-yellow-300 transition duration-300">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/about') }}" class="hover:text-yellow-300 transition duration-300">About</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/services') }}" class="hover:text-yellow-300 transition duration-300">Services</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/contact') }}" class="hover:text-yellow-300 transition duration-300">Contact</a>
+                    </li>
+                    @auth
+                        <li>
+                            <a href="{{ url('/dashboard') }}" class="hover:text-yellow-300 transition duration-300">Dashboard</a>
+                        </li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="hover:text-yellow-300 transition duration-300">Logout</button>
+                            </form>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('login') }}" class="hover:text-yellow-300 transition duration-300">Login</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('register') }}" class="hover:text-yellow-300 transition duration-300">Register</a>
+                        </li>
+                    @endauth
+                </ul>
+            </nav>
+        </div>
     </header>
 </body>
 </html>
