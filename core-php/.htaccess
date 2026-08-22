@@ -1,0 +1,27 @@
+# Deny access to users.php to prevent direct access
+<Files "users.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Enable rewriting for friendly URLs or future routing if needed
+# RewriteEngine On
+
+# Uncomment to force HTTPS (if your server supports it)
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Basic security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# PHP session cookie security settings could be set server-wide or here if apache allows
+# php_value session.cookie_httponly 1
+# php_value session.cookie_secure 1
+# php_value session.use_strict_mode 1
+
+# Prevent directory listing
+Options -Indexes
